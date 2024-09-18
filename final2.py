@@ -2,6 +2,14 @@ import streamlit as st
 import json
 import pandas as pd
 import ijson  # For streaming large JSON files
+import sys
+import subprocess
+
+try:
+    import ijson
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "ijson"])
+    import ijson
 
 # Load datasets
 with open('trains.json') as f:
